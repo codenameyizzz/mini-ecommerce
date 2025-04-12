@@ -26,12 +26,17 @@
         <section>
             <h2>Products</h2>
             <div id="product-list" class="card">
-                <button hx-get="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
-                    Load Products
-                </button>
-                <ul id="product-list-content"></ul>
+              <form hx-post="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
+                <input type="text" name="name" placeholder="Product Name" required />
+                <input type="number" name="price" placeholder="Price" required />
+                <button type="submit">Add Product</button>
+              </form>
+              <button hx-get="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
+                Reload Products
+              </button>
+              <ul id="product-list-content"></ul>
             </div>
-        </section>
+          </section>          
 
         <!-- Orders Section -->
         <section>
