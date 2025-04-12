@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini E-Commerce</title>
+    <script src="https://unpkg.com/htmx.org@1.7.0"></script> <!-- HTMX -->
+    <link rel="stylesheet" href="css/styles.css"> <!-- Link CSS -->
+</head>
+<body>
+    <div class="container">
+        <h1>Mini E-Commerce</h1>
+
+        <!-- Users Section -->
+        <section>
+            <h2>Users</h2>
+            <div id="user-list" class="card">
+                <button hx-get="http://localhost:3000/users" hx-target="#user-list" hx-swap="outerHTML">
+                    Load Users
+                </button>
+                <ul id="user-list-content"></ul>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section>
+            <h2>Products</h2>
+            <div id="product-list" class="card">
+                <button hx-get="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
+                    Load Products
+                </button>
+                <ul id="product-list-content"></ul>
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section>
+            <h2>Orders</h2>
+            <div id="order-list" class="card">
+                <button hx-get="http://localhost:3002/orders" hx-target="#order-list" hx-swap="outerHTML">
+                    Load Orders
+                </button>
+                <ul id="order-list-content"></ul>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 Mini E-Commerce</p>
+        </footer>
+    </div>
+</body>
