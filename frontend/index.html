@@ -1,56 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini E-Commerce</title>
-    <script src="https://unpkg.com/htmx.org@1.7.0"></script> <!-- HTMX -->
-    <link rel="stylesheet" href="css/styles.css"> <!-- Link CSS -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mini E-Commerce</title>
+  <script src="https://unpkg.com/htmx.org@1.7.0"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-    <div class="container">
-        <h1>Mini E-Commerce</h1>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">Mini E-Commerce</div>
+    <ul class="nav-links">
+      <li><a href="pages/dashboard.html" hx-get="pages/dashboard.html" hx-target="#main-content" hx-swap="innerHTML">Home</a></li>
+      <li><a href="pages/users.html" hx-get="pages/users.html" hx-target="#main-content" hx-swap="innerHTML">Users</a></li>
+      <li><a href="pages/products.html" hx-get="pages/products.html" hx-target="#main-content" hx-swap="innerHTML">Products</a></li>
+      <li><a href="pages/orders.html" hx-get="pages/orders.html" hx-target="#main-content" hx-swap="innerHTML">Orders</a></li>
+    </ul>
+  </nav>
 
-        <!-- Users Section -->
-        <section>
-            <h2>Users</h2>
-            <div id="user-list" class="card">
-                <button hx-get="http://localhost:3000/users" hx-target="#user-list" hx-swap="outerHTML">
-                    Load Users
-                </button>
-                <ul id="user-list-content"></ul>
-            </div>
-        </section>
+  <!-- Dynamic Content Loaded Here -->
+  <div class="container" id="main-content">
+    <!-- Dashboard default loaded via JS -->
+    <script>
+      window.addEventListener('DOMContentLoaded', () => {
+        fetch("pages/dashboard.html")
+          .then(res => res.text())
+          .then(html => document.getElementById("main-content").innerHTML = html);
+      });
+    </script>
+  </div>
 
-        <!-- Products Section -->
-        <section>
-            <h2>Products</h2>
-            <div id="product-list" class="card">
-              <form hx-post="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
-                <input type="text" name="name" placeholder="Product Name" required />
-                <input type="number" name="price" placeholder="Price" required />
-                <button type="submit">Add Product</button>
-              </form>
-              <button hx-get="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
-                Reload Products
-              </button>
-              <ul id="product-list-content"></ul>
-            </div>
-          </section>          
-
-        <!-- Orders Section -->
-        <section>
-            <h2>Orders</h2>
-            <div id="order-list" class="card">
-                <button hx-get="http://localhost:3002/orders" hx-target="#order-list" hx-swap="outerHTML">
-                    Load Orders
-                </button>
-                <ul id="order-list-content"></ul>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2025 Mini E-Commerce</p>
-        </footer>
-    </div>
+  <footer>
+    <p>&copy; 2025 Mini E-Commerce</p>
+  </footer>
 </body>
+</html>

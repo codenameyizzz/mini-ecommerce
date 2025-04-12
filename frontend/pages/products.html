@@ -1,0 +1,9 @@
+<section id="products">
+  <h2>Products</h2>
+  <div id="product-list" class="card">
+    <button hx-get="http://localhost:3001/products" hx-target="#product-list" hx-swap="outerHTML">
+      Load Products
+    </button>
+    <div id="product-list-content" class="grid product-grid"></div>
+  </div>
+</section>
